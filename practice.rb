@@ -6,6 +6,8 @@
 # of which represents a transfer of KelloggCoin from one user to another – transactions 
 # with no from_user are from the "ICO" (Initial Coin Offering)
 
+# BATU notes: list of hashes 
+
 blockchain = [
   { from_user: nil, to_user: "ben", amount: 20000 },
   { from_user: nil, to_user: "brian", amount: 20000 },
@@ -27,3 +29,38 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+bens_balance = 0
+brians_balance = 0
+evans_balance = 0
+anthonys_balance = 0
+
+for transaction in blockchain
+
+  if transaction[:to_user] == "ben"
+    bens_balance = bens_balance + transaction[:amount]
+  elsif transaction[:to_user] == "brian"
+    brians_balance = brians_balance + transaction[:amount]
+  elsif transaction[:to_user] == "evan"
+    evans_balance = evans_balance + transaction[:amount]
+  elsif transaction[:to_user] == "anthony"
+    anthonys_balance = anthonys_balance + transaction[:amount]
+  end
+
+
+  if transaction[:from_user] == "ben"
+    bens_balance = bens_balance - transaction[:amount]
+  elsif transaction[:from_user] == "brian"
+    brians_balance = brians_balance - transaction[:amount]
+  elsif transaction[:from_user] == "evan"
+    evans_balance = evans_balance - transaction[:amount]
+  elsif transaction[:from_user] == "anthony"
+    anthonys_balance = anthonys_balance - transaction[:amount]
+  end
+
+end
+
+puts "Ben has #{bens_balance} worth of bitcoins"
+puts "Brian has #{brians_balance} worth of bitcoins"
+puts "Evans has #{evans_balance} worth of bitcoins"
+puts "Anthony has #{anthonys_balance} worth of bitcoins"
